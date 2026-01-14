@@ -1,12 +1,16 @@
-import sys
+def attendance_status(classes_held, classes_attended):
+    percentage = (classes_attended / classes_held) * 100
+    if percentage >= 75:
+        return percentage, "Eligible"
+    else:
+        return percentage, "Not Eligible"
 
-def celsius_to_fahrenheit(celsius):
-    return (celsius * 9 / 5) + 32
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python temperature.py <celsius>")
-    else:
-        celsius = float(sys.argv[1])
-        fahrenheit = celsius_to_fahrenheit(celsius)
-        print(f"Temperature in Fahrenheit: {fahrenheit}")
+    classes_held = int(input("Enter number of classes held: "))
+    classes_attended = int(input("Enter number of classes attended: "))
+
+    percentage, status = attendance_status(classes_held, classes_attended)
+
+    print(f"Attendance Percentage: {percentage:.2f}%")
+    print(status)
